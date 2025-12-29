@@ -53,7 +53,7 @@
     }
     .nav-menu a:hover { color: var(--primary-brown); }
 
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-espresso); }
 
     /* --- Hero Section --- */
     .hero-small { 
@@ -66,7 +66,7 @@
       color: var(--white); 
       text-align: center;
     }
-    .hero-small h1 { font-size: clamp(1.8rem, 6vw, 3.5rem); text-transform: uppercase; letter-spacing: 4px; }
+    .hero-small h1 { font-size: clamp(1.8rem, 6vw, 3.5rem); text-transform: uppercase; letter-spacing: 4px; padding: 0 15px; }
 
     /* --- Properties Grid --- */
     .properties-section { padding: 60px 6%; }
@@ -124,13 +124,27 @@
     .modal-list li { margin-bottom: 8px; font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
     .modal-list li i { color: var(--primary-brown); margin-top: 4px; }
 
-    /* --- Footer --- */
+    /* --- Footer & Newsletter --- */
     .site-footer { background: var(--deep-espresso); color: var(--accent-tan); padding: 60px 6% 30px; margin-top: 40px; }
     .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
     .footer-logo { height: 45px; margin-bottom: 15px; filter: brightness(1.2); }
+    .footer-col h3 { color: var(--white); margin-bottom: 20px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
     .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-links-list a { text-decoration: none; color: var(--accent-tan); font-size: 0.9rem; transition: 0.3s; }
     .footer-links-list a:hover { color: white; padding-left: 5px; }
+
+    /* Newsletter Specific Styling */
+    .footer-input {
+      width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px; background: rgba(255,255,255,0.05); color: white; outline: none;
+    }
+    .n-btn {
+      background: var(--primary-brown); color: var(--white); border: none; padding: 12px; 
+      border-radius: 4px; width: 100%; cursor: pointer; font-weight: 700; 
+      text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+    }
+    .n-btn:hover { background: #795548; transform: translateY(-2px); }
+
     .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; opacity: 0.6; }
 
     /* --- Responsive --- */
@@ -143,6 +157,8 @@
       .nav-menu.active { display: flex; }
       .modal-grid { grid-template-columns: 1fr; }
       .hero-small { height: 25vh; }
+      .footer-grid { text-align: center; }
+      .footer-logo { margin: 0 auto 15px; }
     }
   </style>
 </head>
@@ -175,7 +191,7 @@
           <div><strong>The Space</strong><ul id="modalSpace" class="modal-list"></ul></div>
           <div><strong>Amenities</strong><ul id="modalAmenities" class="modal-list"></ul></div>
         </div>
-        <button class="p-btn" style="margin-top: 30px;" onclick="location.href='contact us.html'">Book a Private Tour</button>
+        <button class="p-btn" style="margin-top: 30px;" onclick="location.href='contact us.html'">Inquire for Details</button>
       </div>
     </div>
   </div>
@@ -188,8 +204,10 @@
     <div class="footer-grid">
       <div class="footer-col">
         <img src="lo.jpg" class="footer-logo" onerror="this.src='https://via.placeholder.com/150x50?text=THE+WOODS'">
-        <p>Luxury real estate since 1973.</p>
+        <h3>The Woods</h3>
+        <p style="font-size: 0.9rem;">Bengaluru's pioneer in luxury real estate since 1973. We don't just build, we sustain architectural legacies.</p>
       </div>
+      
       <div class="footer-col">
         <h3>Quick Links</h3>
         <ul class="footer-links-list">
@@ -199,25 +217,36 @@
           <li><a href="contact us.html">Contact</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h3>Contact</h3>
-        <p><i class="fa-solid fa-location-dot"></i> Bengaluru, KA</p>
-        <p><i class="fa-solid fa-phone"></i> +91 80 1234 5678</p>
+        <p style="font-size: 0.9rem;"><i class="fa-solid fa-location-dot"></i> Bengaluru, KA, India</p>
+        <p style="font-size: 0.9rem;"><i class="fa-solid fa-phone"></i> +91 80 1234 5678</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Newsletter</h3>
+        <p style="font-size: 0.85rem; margin-bottom: 15px;">Get exclusive previews of new elite listings.</p>
+        <form class="footer-form">
+          <input type="email" placeholder="Your Email" class="footer-input" required>
+          <button type="submit" class="n-btn">Subscribe</button>
+        </form>
       </div>
     </div>
     <div class="footer-bottom">&copy; 2025 The Woods Real Estate. All rights reserved.</div>
   </footer>
 
   <script>
+    // 9 Properties Data
     const properties = [
       { id: 1, title: "Heritage Haven", loc: "Madiwala, Bengaluru", price: "Premium", img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80", desc: "A timeless retreat with Rajasthani artistry.", space: ["5 BHK Villa", "Grand Hall"], amenities: ["Antique Furniture", "Lush Gardens"] },
       { id: 2, title: "The Woods Zenith", loc: "Hebbal, Bengaluru", price: "₹4.5 Cr+", img: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80", desc: "Panoramic views of Hebbal Lake.", space: ["4 BHK Sky Suite", "Private Pool"], amenities: ["Concierge", "Smart Home"] },
       { id: 3, title: "The Oak Manor", loc: "Whitefield, Bengaluru", price: "₹12.5 Cr+", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", desc: "English-style estate on 2 acres.", space: ["6 Bedroom Estate", "Wine Cellar"], amenities: ["Oak Trees", "Chef Kitchen"] },
-      { id: 4, title: "Skyline Elite", loc: "Lavelle Road", price: "₹8.9 Cr+", img: "img1.jpg", desc: "Urban sanctuary in the CBD.", space: ["3 BHK Penthouse", "Rooftop Garden"], amenities: ["Gym & Spa", "Valet"] },
+      { id: 4, title: "Skyline Elite", loc: "Lavelle Road", price: "₹8.9 Cr+", img: "https://images.unsplash.com/photo-1600607687940-c52af0b439f3?auto=format&fit=crop&w=800&q=80", desc: "Urban sanctuary in the CBD.", space: ["3 BHK Penthouse", "Rooftop Garden"], amenities: ["Gym & Spa", "Valet"] },
       { id: 5, title: "Emerald Grove", loc: "Sarjapur Road", price: "₹2.8 Cr+", img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80", desc: "Sustainable forest-living.", space: ["3 BHK Row House", "Organic Garden"], amenities: ["Solar Grid", "Community Farm"] },
       { id: 6, title: "Pinecrest Villas", loc: "Devanahalli", price: "₹5.1 Cr+", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", desc: "Alpine-inspired cool escape.", space: ["5 BHK Villa", "Stone Fireplace"], amenities: ["EV Charging", "Jogging Track"] },
       { id: 7, title: "The Glass House", loc: "Koramangala", price: "₹7.2 Cr+", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", desc: "Modern minimalism with floor-to-ceiling glass.", space: ["4 BHK Modernist", "Wrap-around Deck"], amenities: ["Smart Privacy Glass", "Infinity Edge"] },
-      { id: 8, title: "Royal Orchards", loc: "Jayanagar", price: "₹10.0 Cr+", img: "img2.jpg", desc: "Classic luxury in old Bangalore.", space: ["5 BHK Bungalow", "Private Courtyard"], amenities: ["Teakwood Pillars", "Temple Room"] },
+      { id: 8, title: "Royal Orchards", loc: "Jayanagar", price: "₹10.0 Cr+", img: "https://images.unsplash.com/photo-1580587767303-96c00262d173?auto=format&fit=crop&w=800&q=80", desc: "Classic luxury in old Bangalore.", space: ["5 BHK Bungalow", "Private Courtyard"], amenities: ["Teakwood Pillars", "Temple Room"] },
       { id: 9, title: "Vista Del Mar", loc: "Nandi Hills (Outskirts)", price: "₹3.5 Cr+", img: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80", desc: "The perfect weekend getaway home.", space: ["3 BHK Cottage", "Terrace BBQ"], amenities: ["Mountain Views", "Fire Pit"] }
     ];
 
