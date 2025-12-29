@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | The Woods Bengaluru</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-brown: #5D4037;
+      --deep-espresso: #3E2723;
+      --accent-tan: #D7CCC8;
+      --soft-cream: #F5F5F5;
+      --white: #FFFFFF;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { 
+      font-family: 'Segoe UI', Roboto, sans-serif; 
+      background-color: var(--soft-cream); 
+      color: var(--deep-espresso); 
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 6%;
+      background-color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 4px solid var(--primary-brown);
+    }
+    .logo img { height: 50px; }
+    .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+    .nav-menu { display: flex; gap: 2.5rem; }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--deep-espresso);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    /* Hero Section */
+    .hero-small { 
+      height: 40vh; 
+      background: linear-gradient(rgba(62, 39, 35, 0.7), rgba(62, 39, 35, 0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover;
+      display: flex; align-items: center; justify-content: center; color: var(--white); text-align: center;
+    }
+    .hero-small h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); text-transform: uppercase; letter-spacing: 5px; }
+
+    /* Info Cards */
+    .contact-info-section { padding: 60px 6% 40px; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .info-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid var(--accent-tan);
+      transition: var(--transition);
+    }
+    .info-card:hover { transform: translateY(-10px); border-color: var(--primary-brown); }
+    .icon-box {
+      width: 60px; height: 60px;
+      background: var(--deep-espresso);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 24px;
+      transition: var(--transition);
+    }
+    .info-card:hover .icon-box { transform: scale(1.1) rotate(10deg); background: var(--primary-brown); }
+
+    /* Dual Section */
+    .dual-section { display: flex; width: 100%; min-height: 600px; background: var(--white); }
+    .form-box { width: 50%; padding: 60px 8%; display: flex; flex-direction: column; justify-content: center; }
+    .form-box h2 { font-size: 2.2rem; margin-bottom: 30px; }
+    .contact-form { display: flex; flex-direction: column; gap: 15px; }
+    .contact-form input, .contact-form textarea {
+      padding: 15px 20px; border: 1px solid var(--accent-tan); border-radius: 4px;
+      background: var(--soft-cream); font-size: 1rem; outline: none; transition: 0.3s;
+    }
+    .submit-btn {
+      background: var(--primary-brown); color: white; padding: 15px 45px; border-radius: 4px;
+      border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s;
+    }
+    .submit-btn:hover { background: var(--deep-espresso); transform: translateY(-3px); }
+    .side-image { width: 50%; background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200') center/cover; }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--deep-espresso);
+      color: var(--accent-tan);
+      padding: 80px 6% 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-col h3 { 
+      color: var(--white); 
+      margin-bottom: 25px; 
+      text-transform: uppercase; 
+      font-size: 0.9rem; 
+      letter-spacing: 2px; 
+    }
+    .footer-brand .footer-logo { 
+      height: 60px; 
+      margin-bottom: 20px; 
+      filter: brightness(1.2); 
+    }
+    
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { text-decoration: none; color: var(--accent-tan); font-size: 0.95rem; transition: 0.3s; }
+    .footer-links a:hover { color: var(--white); padding-left: 8px; }
+
+    .newsletter-form { display: flex; flex-direction: column; gap: 12px; }
+    .newsletter-form input {
+      padding: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px; color: white; outline: none;
+    }
+    
+    .n-btn {
+      background: var(--primary-brown); 
+      color: var(--white); 
+      padding: 12px;
+      border: none; 
+      border-radius: 4px;
+      font-weight: 700; 
+      text-transform: uppercase; 
+      cursor: pointer; 
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+    .n-btn:hover { background: #4e342e; transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .nav-menu {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: var(--white); flex-direction: column; padding: 30px; border-bottom: 2px solid var(--primary-brown);
+      }
+      .nav-menu.active { display: flex; }
+      .dual-section { flex-direction: column; }
+      .form-box, .side-image { width: 100% !important; }
+      .side-image { height: 300px; order: -1; }
+      .footer-grid { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav-container">
+  <div class="logo"><img src="lo.jpg" alt="The Woods Logo"></div>
+  <div class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
+  <nav class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="About us.html">About Us</a>
+    <a href="Featured.html">Featured</a>
+    <a href="contact us.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero-small">
+  <h1>Get In Touch</h1>
+</section>
+
+<section class="contact-info-section">
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+      <h3>Email</h3><p>concierge@thewoods.in</p>
+    </div>
+    <div class="info-card">
+      <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+      <h3>Phone</h3><p>+91 80 4567 8900</p>
+    </div>
+    <div class="info-card">
+      <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+      <h3>Office</h3><p>Bengaluru, KA, India</p>
+    </div>
+  </div>
+</section>
+
+<section class="dual-section">
+  <div class="form-box">
+    <h2>Send a Message</h2>
+    <form class="contact-form" name="submit-to-google-sheet">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <textarea name="message" placeholder="How can we help you?"></textarea>
+      <button type="submit" id="submit-btn" class="submit-btn">Send Message</button>
+    </form>
+    <div id="msg" style="margin-top:15px; font-weight: 600;"></div>
+  </div>
+  <div class="side-image"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col footer-brand">
+      <img src="lo.jpg" alt="The Woods Logo" class="footer-logo">
+      <p>Bengaluru's pioneer in luxury real estate since 1973. We don't just build, we sustain.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About us.html">About Us</a></li>
+        <li><a href="Featured.html">Featured</a></li>
+        <li><a href="contact us.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-contact">
+      <h3>Contact</h3>
+      <p><i class="fa-solid fa-location-dot"></i> Bengaluru, KA, India</p>
+      <p><i class="fa-solid fa-phone"></i> +91 80 1234 5678</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Newsletter</h3>
+      <form class="newsletter-form" name="newsletter-form">
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit" class="n-btn">SUBSCRIBE</button>
+      </form>
+      <div id="newsletter-msg" style="margin-top: 10px; font-size: 0.85rem; font-weight: 600;"></div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2025 The Woods Real Estate. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
+
+  // 1. MAIN CONTACT FORM SCRIPT (Kept as requested)
+  const contactScriptURL = 'https://script.google.com/macros/s/AKfycbwwYg_yrawVQMgArw3m1KsJAN_m9mWfYzR2lAMOevAOcYwDxBpeI-i6nmOBysnSqhgj/exec';
+  const contactForm = document.forms['submit-to-google-sheet'];
+  const contactMsg = document.getElementById("msg");
+
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById("submit-btn").innerText = "SENDING...";
+    fetch(contactScriptURL, { method: 'POST', body: new FormData(contactForm)})
+      .then(response => {
+        contactMsg.innerHTML = "Success! We'll get back to you soon.";
+        contactMsg.style.color = "#2e7d32";
+        document.getElementById("submit-btn").innerText = "SEND MESSAGE";
+        contactForm.reset();
+        setTimeout(() => { contactMsg.innerHTML = ""; }, 5000);
+      })
+      .catch(error => {
+        contactMsg.innerHTML = "Error! Please try again.";
+        contactMsg.style.color = "red";
+      });
+  });
+
+  // 2. NEWSLETTER FORM SCRIPT (Updated to new Script URL)
+  const newsScriptURL = 'https://script.google.com/macros/s/AKfycbyQmHd2D4EQqHLK6EmtNcgpvGiX3oyGjZwg2vb8ppm2MbkLggUnkwwPH5YGpyb6Fm9Grw/exec';
+  const newsForm = document.forms['newsletter-form'];
+  const newsMsg = document.getElementById("newsletter-msg");
+
+  newsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = newsForm.querySelector('.n-btn');
+    btn.innerText = "SAVING...";
+    
+    fetch(newsScriptURL, { method: 'POST', body: new FormData(newsForm)})
+      .then(response => {
+        newsMsg.innerHTML = "Success! You're subscribed.";
+        newsMsg.style.color = "#D7CCC8";
+        btn.innerText = "SUBSCRIBE";
+        newsForm.reset();
+        setTimeout(() => { newsMsg.innerHTML = ""; }, 5000);
+      })
+      .catch(error => {
+        newsMsg.innerHTML = "Error! Try again.";
+        newsMsg.style.color = "#ff8a80";
+        btn.innerText = "SUBSCRIBE";
+      });
+  });
+</script>
+
+</body>
+</html>

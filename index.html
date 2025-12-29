@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Woods | Elegant Bengaluru Real Estate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-brown: #5D4037;
+      --deep-espresso: #3E2723;
+      --accent-tan: #D7CCC8;
+      --soft-cream: #F5F5F5;
+      --white: #FFFFFF;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--soft-cream);
+      color: var(--deep-espresso);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation --- */
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 6%;
+      background-color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 4px solid var(--primary-brown);
+      box-shadow: 0 4px 15px rgba(62, 39, 35, 0.1);
+    }
+
+    .logo img { height: 45px; transition: var(--transition); cursor: pointer; }
+
+    .nav-menu { display: flex; gap: 2.5rem; }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--deep-espresso);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover { color: var(--primary-brown); }
+
+    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--deep-espresso); }
+
+    /* --- Sections General --- */
+    .section-padding { padding: 80px 6%; }
+
+    /* --- Hero Section --- */
+    .hero-section {
+      padding: 100px 6%;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover;
+    }
+
+    .hero-title { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 1.5rem; }
+    .hero-title span { color: var(--primary-brown); font-style: italic; }
+
+    /* --- Legacy Section --- */
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .legacy-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--deep-espresso); }
+    .legacy-text p { margin-bottom: 1.2rem; font-size: 1.05rem; color: #555; }
+    .subtitle { color: var(--primary-brown); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+    
+    .legacy-image img { 
+      width: 100%; 
+      border-radius: 4px; 
+      box-shadow: 20px 20px 0px var(--accent-tan); 
+      display: block;
+    }
+
+    .btn-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--primary-brown);
+      border-bottom: 2px solid var(--primary-brown);
+      padding-bottom: 5px;
+      transition: var(--transition);
+    }
+
+    .btn-link:hover { padding-left: 10px; color: var(--deep-espresso); }
+
+    /* --- Sustainability Section --- */
+    .sustainability-section {
+      background: var(--primary-brown);
+      color: var(--white);
+      padding: 100px 6%;
+      text-align: center;
+    }
+
+    .sus-container { max-width: 900px; margin: 0 auto; }
+    .sus-container h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--white); }
+    
+    .sus-features {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .feature { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .feature i { font-size: 2.5rem; color: var(--accent-tan); }
+    .feature span { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-link.light { color: var(--accent-tan); border-color: var(--accent-tan); }
+
+    /* --- Stats Section --- */
+    .gp-stats-wrapper { background: var(--deep-espresso); color: var(--white); padding: 60px 6%; }
+    .gp-stats-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; text-align: center; }
+    .gp-stat-value { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; color: var(--white); }
+    .gp-stat-text { text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; color: var(--accent-tan); margin-top: 5px; }
+
+    /* --- Property Grid --- */
+    .properties-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 2.5rem; 
+      margin-top: 40px; 
+    }
+
+    .property-card { 
+      background: var(--white); 
+      border-radius: 12px; 
+      overflow: hidden; 
+      border: 1px solid var(--accent-tan); 
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .image-box { height: 250px; overflow: hidden; }
+    .image-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+
+    .property-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15); border-color: var(--primary-brown); }
+    .property-card:hover .image-box img { transform: scale(1.1); }
+    
+    .property-content { padding: 25px; }
+    .price-tag { color: var(--primary-brown); font-weight: 700; font-size: 1.2rem; display: block; margin-top: 10px; }
+
+    /* --- Footer --- */
+    .main-footer { background-color: var(--deep-espresso); color: var(--accent-tan); padding: 80px 6% 30px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+    .footer-col h4 { color: white; margin-bottom: 25px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1.5px; }
+    .footer-logo { height: 50px; margin-bottom: 20px; filter: brightness(1.2); }
+    .footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links-list a { text-decoration: none; color: var(--accent-tan); transition: 0.3s; font-size: 0.95rem; }
+    .footer-links-list a:hover { color: white; padding-left: 5px; }
+    
+    .footer-input { 
+      width: 100%; padding: 12px; margin-bottom: 12px; 
+      border: 1px solid rgba(215, 204, 200, 0.2); 
+      border-radius: 4px; background: rgba(255,255,255,0.05); 
+      color: white; outline: none; 
+    }
+
+    .sub-btn { 
+      background: var(--primary-brown); color: var(--white); 
+      border: none; padding: 12px; border-radius: 4px; 
+      width: 100%; cursor: pointer; font-weight: 700; 
+      text-transform: uppercase; transition: 0.3s; 
+    }
+    .sub-btn:hover { background: #4e342e; }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .nav-menu {
+        position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
+        background: var(--white); flex-direction: column; align-items: center; padding-top: 50px;
+        transition: 0.4s; gap: 2rem; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      }
+      .nav-menu.active { left: 0; }
+      .legacy-grid { grid-template-columns: 1fr; text-align: center; }
+      .legacy-image { order: -1; }
+      .sus-features { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav-container">
+    <div class="logo"><img src="lo.jpg" alt="The Woods Logo"></div>
+    <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
+    <nav class="nav-menu" id="nav-list">
+      <a href="index.html">Home</a>
+      <a href="About us.html">About Us</a>
+      <a href="Featured.html">Featured</a>
+      <a href="contact us.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <p style="color: var(--primary-brown); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-bottom: 10px;">Since 1973</p>
+      <h1 class="hero-title">Find Your <span>Elegant</span> Dream Home</h1>
+      <p>Luxury real estate solutions in the heart of Bengaluru.</p>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="legacy-grid">
+      <div class="legacy-text">
+        <span class="subtitle">Perfecting the Art of Development</span>
+        <h2>The Woods Legacy Since 1975.</h2>
+        <p><strong>The Woods</strong> isn’t just a name—it’s a legacy. For nearly five decades, we've been at the forefront of Indian real estate, transforming cityscapes across Bangalore, Mumbai, Chennai, Pune, and beyond.</p>
+        <p>From high-rises to landmark residences, our projects reflect a simple promise: quality that endures, and trust that’s earned.</p>
+        <a href="About us.html" class="btn-link">Know More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="legacy-image">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="The Woods Architecture">
+      </div>
+    </div>
+  </section>
+
+  <section class="sustainability-section">
+    <div class="sus-container">
+      <span class="subtitle" style="color: var(--accent-tan);">Eco-Conscious Living</span>
+      <h2>Sustainable Luxury, Built for the Future</h2>
+      <p>At <strong>The Woods</strong>, sustainability isn’t just a commitment, it’s a way of life. We seamlessly blend eco-conscious design with luxurious living, ensuring every home is crafted with energy-efficient materials, advanced water conservation systems, and effective waste management solutions.</p>
+      
+      <div class="sus-features">
+        <div class="feature"><i class="fa-solid fa-droplet"></i><span>Water Saving</span></div>
+        <div class="feature"><i class="fa-solid fa-leaf"></i><span>Native Greenery</span></div>
+        <div class="feature"><i class="fa-solid fa-solar-panel"></i><span>Energy Efficient</span></div>
+        <div class="feature"><i class="fa-solid fa-recycle"></i><span>Waste Mgmt</span></div>
+      </div>
+
+      <p>By prioritizing sustainable innovation, The Woods is shaping a greener tomorrow, one home at a time.</p>
+      <a href="About us.html" class="btn-link light">Know More <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <section class="gp-stats-wrapper">
+    <div class="gp-stats-container">
+      <div class="gp-stat-box">
+        <h3 class="gp-stat-value" data-target="1000">0</h3>
+        <p class="gp-stat-text">Happy Families</p>
+      </div>
+      <div class="gp-stat-box">
+        <h3 class="gp-stat-value" data-target="500">0</h3>
+        <p class="gp-stat-text">Bangalore Projects</p>
+      </div>
+      <div class="gp-stat-box">
+        <h3 class="gp-stat-value" data-target="210">0</h3>
+        <p class="gp-stat-text">Design Awards</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Featured Projects</h2>
+    </div>
+    <div class="properties-grid">
+      <article class="property-card" onclick="location.href='Featured.html'">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Zenith"></div>
+        <div class="property-content">
+          <h3>The Woods Zenith</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Hebbal, North Bengaluru</p>
+          <span class="price-tag">₹4.5 Cr onwards</span>
+        </div>
+      </article>
+
+      <article class="property-card" onclick="location.href='Featured.html'">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Heritage"></div>
+        <div class="property-content">
+          <h3>Heritage Heights</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Indiranagar, Bengaluru</p>
+          <span class="price-tag">₹3.2 Cr onwards</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="lo.jpg" alt="The Woods Logo" class="footer-logo">
+        <h4>The Woods</h4>
+        <p>Bengaluru's pioneer in luxury real estate since 1973. We don't just build, we sustain.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="About us.html">About Us</a></li>
+          <li><a href="Featured.html">Featured</a></li>
+          <li><a href="contact us.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p style="margin-bottom: 12px;"><i class="fa-solid fa-location-dot"></i> Bengaluru, KA, India</p>
+        <p><i class="fa-solid fa-phone"></i> +91 80 1234 5678</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <form name="newsletter-form">
+          <input type="email" name="email" placeholder="Your email" class="footer-input" required>
+          <button type="submit" id="sub-btn" class="sub-btn">SUBSCRIBE</button>
+        </form>
+        <div id="msg" style="margin-top: 10px; font-size: 0.85rem;"></div>
+      </div>
+    </div>
+    <p style="text-align: center; font-size: 0.8rem; opacity: 0.5; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
+      &copy; 2025 The Woods Real Estate. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    // Navigation Logic
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      menuToggle.innerHTML = navList.classList.contains('active') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Stats Counter Animation
+    const stats = document.querySelectorAll('.gp-stat-value');
+    const animateStats = () => {
+      stats.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText.replace('+', '');
+          const inc = Math.ceil(target / 50);
+          if (count < target) { 
+            counter.innerText = (count + inc); 
+            setTimeout(updateCount, 40); 
+          } else { 
+            counter.innerText = target + "+"; 
+          }
+        };
+        updateCount();
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { 
+        animateStats(); 
+        observer.disconnect(); 
+      }
+    }, { threshold: 0.2 });
+
+    observer.observe(document.querySelector('.gp-stats-wrapper'));
+
+    // Form Submission Logic
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyQmHd2D4EQqHLK6EmtNcgpvGiX3oyGjZwg2vb8ppm2MbkLggUnkwwPH5YGpyb6Fm9Grw/exec';
+    const form = document.forms['newsletter-form'];
+    const msg = document.getElementById("msg");
+    const btn = document.getElementById("sub-btn");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      btn.disabled = true; 
+      btn.innerText = "SENDING...";
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          msg.innerHTML = "Subscribed successfully!";
+          btn.innerText = "SUBSCRIBE"; 
+          btn.disabled = false;
+          form.reset();
+          setTimeout(() => { msg.innerHTML = "" }, 5000);
+        })
+        .catch(error => {
+          msg.innerHTML = "Something went wrong. Try again.";
+          btn.innerText = "SUBSCRIBE";
+          btn.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>
